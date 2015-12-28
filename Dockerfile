@@ -6,8 +6,7 @@ MAINTAINER Christian R. Vozar <cvozar@civisanalytics.com>
 ADD cmd/elb-presence /elb-presence
 RUN chmod +x /elb-presence
 
-# Certificates here are needed for Go's crypto/x509 package which is utilized by
-# the HTTPS client.
-ADD ca-bundle.crt /etc/ssl/ca-bundle.pem
+# Certificates required for Go's crypto/x509 package; utilized by HTTPS client.
+ADD http://curl.haxx.se/ca/cacert.pem /etc/ssl/ca-bundle.pem
 
 CMD ["/elb-presence"]
